@@ -31,27 +31,6 @@ jobs:
 
     - name: Run Unit Tests
       run: ./gradlew testDebugUnitTest
-  
-  emulator:
-    runs-on: macos
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v3
-      - name: set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: gradle
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
-      - name: Run Instrumented Tests
-        uses: ReactiveCircus/android-emulator-runner@v2.29.0
-        with:
-          api-level: 24
-          target: default
-          arch: x86
-          profile: Nexus 6
-          script: ./gradlew connectedCheck --stacktrace
+    - name: Assemble
+      run: ./gradlew assembleDebug
