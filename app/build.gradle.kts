@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -21,12 +23,18 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        //Secrets
+        buildConfigField("String", "TMDB_API_KEY", getEnvSecret("TMDB_API_KEY"))
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
             val proguards = fileTree("proguard") {
                 include("*.pro")
             }
@@ -42,6 +50,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -91,3 +100,7 @@ dependencies {
 kapt {
     correctErrorTypes = true
 }
+
+fun getEnvSecret(
+    key: String
+): String = System.getenv()[key] ?: gradleLocalProperties(rootDir).getProperty(key)
