@@ -25,7 +25,7 @@ android {
         }
 
         //Secrets
-        buildConfigField("String", "TMDB_API_KEY", getEnvSecret("TMDB_API_KEY"))
+        buildConfigField("String", "TMDB_API_KEY", "\"${getEnvVal("TMDB_API_KEY")}\"")
     }
 
     buildTypes {
@@ -101,6 +101,6 @@ kapt {
     correctErrorTypes = true
 }
 
-fun getEnvSecret(
+fun getEnvVal(
     key: String
-): String = System.getenv()[key] ?: gradleLocalProperties(rootDir).getProperty(key)
+): Any = System.getenv()[key] ?: gradleLocalProperties(rootDir).getProperty(key)
