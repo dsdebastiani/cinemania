@@ -27,6 +27,10 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            val proguards = fileTree("proguard") {
+                include("*.pro")
+            }
+            proguardFiles(*proguards.toList().toTypedArray())
         }
     }
     compileOptions {
@@ -77,6 +81,10 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    // Network dependencies
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.moshi)
 
 }
 
