@@ -1,4 +1,4 @@
-package io.github.dsdebastiani.cinemania.core.network.resonses
+package io.github.dsdebastiani.cinemania.core.network.responses
 
 
 import com.squareup.moshi.Json
