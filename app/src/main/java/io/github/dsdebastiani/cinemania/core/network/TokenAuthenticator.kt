@@ -16,7 +16,7 @@ class TokenAuthenticator(
 
     override fun authenticate(route: Route?, response: Response): Request? {
         val token = "$AUTHORIZATION_TOKEN_TYPE $token"
-        return response.request().newBuilder()
+        return response.request.newBuilder()
             .header(HEADER_AUTHORIZATION, token)
             .build()
     }
