@@ -94,6 +94,7 @@ dependencies {
     // Network dependencies
     implementation(libs.retrofit)
     implementation(libs.retrofit.moshi)
+    implementation(libs.moshi.kotlin)
 
 }
 
