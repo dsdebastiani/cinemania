@@ -25,7 +25,7 @@ android {
         }
 
         //Secrets
-        buildConfigField("String", "TMDB_API_KEY", "\"${getEnvVal("TMDB_API_KEY")}\"")
+        buildConfigField("String", "TMDB_API_KEY", "\"${getEnvVal("TMDB_API_KEY") ?: "" }\"")
     }
 
     buildTypes {
@@ -53,7 +53,7 @@ android {
         buildConfig = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.6"
     }
     packaging {
         resources {
@@ -103,4 +103,4 @@ dependencies {
 
 fun getEnvVal(
     key: String
-): Any = System.getenv()[key] ?: gradleLocalProperties(rootDir).getProperty(key)
+): Any? = System.getenv()[key] ?: gradleLocalProperties(rootDir).getProperty(key)
