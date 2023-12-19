@@ -10,8 +10,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
 
     steps:
     - uses: actions/checkout@v3
@@ -33,6 +31,10 @@ jobs:
 
     - name: Run Unit Tests
       run: ./gradlew testDebugUnitTest
+      env:
+        TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
 
     - name: Assemble
       run: ./gradlew assembleDebug
+      env:
+        TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
