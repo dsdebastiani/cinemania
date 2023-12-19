@@ -1,3 +1,5 @@
+![](app/src/main/res/drawable-nodpi/cinemania_logo.png)
+
 # CineMania
 
 CineMania é uma aplicação Android para fins de estudos. CineMania se conecta com a api [TMBD](https://www.themoviedb.org/) para acesso ao conteúdo.
