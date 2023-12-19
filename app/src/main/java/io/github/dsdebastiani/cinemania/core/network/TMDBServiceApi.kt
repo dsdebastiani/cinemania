@@ -4,21 +4,11 @@ import io.github.dsdebastiani.cinemania.core.network.request.TimeWindow
 import io.github.dsdebastiani.cinemania.core.network.request.TimeWindow.DAY
 import io.github.dsdebastiani.cinemania.core.network.responses.MovieResponse
 import io.github.dsdebastiani.cinemania.core.network.responses.PageResponse
-import io.github.dsdebastiani.cinemania.core.network.responses.configuration.ConfigurationResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface TMDBServiceApi {
-
-    /**
-     * Query the API configuration details.
-     * The data returned here in the configuration endpoint is designed to provide some of
-     * the required information you'll need as you integrate our API. For example, you can get a
-     * list of valid image sizes and the valid image address.
-     **/
-    @GET("configuration")
-    suspend fun configuration() : ConfigurationResponse
 
     /**
      * Get the trending movies on TMDB.

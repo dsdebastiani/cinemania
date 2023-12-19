@@ -10,9 +10,12 @@ private val DarkColorScheme = darkColorScheme(
     secondary = Red60,
     tertiary = Teal,
     background = Black08,
+    surface = Black10,
+    surfaceVariant = Black10,
     onBackground = Grey60,
     onSurface = Grey60,
-    onSurfaceVariant = White
+    onSurfaceVariant = White,
+    outline = Black15
 )
 
 @Composable
